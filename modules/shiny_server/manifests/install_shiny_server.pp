@@ -54,6 +54,8 @@ class shiny_server::install_shiny_server {
   $latest_version = inline_template("<%= `/usr/bin/curl -s https://posit.co/download/shiny-server/ | /usr/bin/grep -iP 'ubuntu-18\.04\/x86_64\/shiny-server-[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+-amd64\.deb' | /usr/bin/cut -d '-' -f 4` %>")
   notify{"The value of latest_version is: ${latest_version}": }
   notify{"The value of shiny_server_installed_version is: ${shiny_server_installed_version}": }
+  $number_version = regsubst($latest_version, '\.', '')
+  notify{"The value of number_version is: ${number_version}": }
 
   exec { "install_latest_shiny_server":
     command     => "/usr/bin/curl -s ${url} | /usr/bin/grep -iP '${patern}'",
@@ -61,9 +63,7 @@ class shiny_server::install_shiny_server {
     # only install the package if it's not already installed
     # *****************************************************
     # CURRENTLY THIS IS TESTING VERSION NUMBERS WITH /USR/BIN/TEST - DOES NOT WORK AS NOT INTEGER
-    # onlyif      => "/usr/bin/test ${latest_version} -gt ${shiny_server_installed_version}",
-    # onlyif      => "/usr/bin/dpkg --compare-versions ${latest_version} gt ${shiny_server_installed_version}",
-    notify{" --compare-versions ${latest_version} gt ${shiny_server_installed_version}":}
+    onlyif      => "/usr/bin/test ${latest_version} -gt ${shiny_server_installed_version}",
     require     => Package['r-base'],
   }
 
