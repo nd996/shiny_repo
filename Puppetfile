@@ -4,4 +4,3 @@ mod 'puppetlabs/concat'
 mod 'puppetlabs/translate'
 mod 'puppetlabs/apt'
 mod 'cpick-gdebi', '0.1.2'  # for installing the r shiny deb
-# mod 'sessionm-puppet_r', '0.0.2' 

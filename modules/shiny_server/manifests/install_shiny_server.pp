@@ -61,7 +61,8 @@ class shiny_server::install_shiny_server {
     command     => "/usr/bin/curl -s ${url} | /usr/bin/grep -iP '${patern}'",
     timeout     => $timeout,
     # only install the package if it's not already installed
-    # unless      => "${r_path} -q -e \"'${name}' %in% installed.packages()\" | grep 'TRUE'",
+    # *****************************************************
+    # CURRENTLY THIS IS TESTING VERSION NUMBERS WITH /USR/BIN/TEST - DOES NOT WORK AS NOT INTEGER
     onlyif      => "/usr/bin/test ${latest_version} -gt ${shiny_server_installed_version}",
     require     => Package['r-base'],
   }
@@ -72,8 +73,5 @@ class shiny_server::install_shiny_server {
     source   => '/root/shiny-server.deb',
     subscribe  => Exec['install_latest_shiny_server'],
   }
-
-  # notify{$::shiny_server_deb_version:}
-  # notify{$::shiny_server_installed_version:}
 
 }
