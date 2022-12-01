@@ -1,5 +1,5 @@
 class role::shiny_server {
   include profile::base
-  include profile::shiny
-  include profile::r_packages
+  include shiny_server::install_shiny_server
+  include shiny_server::r_packages
 }
