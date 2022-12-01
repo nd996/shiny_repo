@@ -1,10 +1,16 @@
 # Test in VMs to get R & Shiney installed via Puppet
 
+01.12.22
+- Made it more modular
+- It now tests if the latest shiny-server.deb is installed and wont download, or re-install that deb if we have the latest
+- Set a few custom facts to help out
+- Renamed a a few things to be more intuitive
+
 Basic working version, right now it adds the official R repo, installs the latest version of R, adds the R packages then installs Shiny server and one extra R package. The R packages can be installed through the install_package.pp simple by adding a new line.
 
 To Do
-- Orgainse the files and folders including better naming
-- Test Shiny deb is installed before installing again, right now it installs every time
+- Orgainse the files and folders including better naming **in progress**
+- Test Shiny deb is installed before installing again, right now it installs every time  **in progress**
 - No work on adding new apps has been started yet
 - Eventually this should be a complete module we submit to Puppet Forge
 - Probably need to customise settings, for the web server, logs etc
