@@ -1,6 +1,7 @@
 # Test in VMs to get R & Shiney installed via Puppet
 
 02.12.22
+- Added defined resource to install shiny apps!!
 - Tidied the code up a little
 
 ---
@@ -18,9 +19,10 @@ Basic working version, right now it adds the official R repo, installs the lates
 To Do
 - Orgainse the files and folders including better naming **in progress**
 - Test Shiny deb is installed before installing again, right now it installs every time  **in progress**
-- No work on adding new apps has been started yet
+- No work on adding new apps has been started yet **in progress**
 - Eventually this should be a complete module we submit to Puppet Forge
 - Probably need to customise settings, for the web server, logs etc
+- Installing a r package with dependencies on a new shiny server takes more than the 300 timeout allows
 - More stuff I'm sure...
 
 ---

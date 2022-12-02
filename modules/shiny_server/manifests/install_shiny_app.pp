@@ -15,6 +15,7 @@ define shiny_server::install_shiny_app (
       ensure   => present,
       provider => git,
       source   => $repo,
+
     }
 
 }

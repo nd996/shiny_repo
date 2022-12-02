@@ -7,6 +7,9 @@ class shiny_server::r_packages {
   shiny_server::install_r_package { 
     'rmarkdown':,
   }
+  shiny_server::install_r_package { 
+    'ggplot2': dependencies => true,
+  }
 
 }
 
