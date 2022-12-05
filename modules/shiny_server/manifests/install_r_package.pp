@@ -2,7 +2,7 @@ define shiny_server::install_r_package (
   $r_path       = '/usr/bin/R',
   $repo         = 'http://cran.rstudio.com',
   $dependencies = false,
-  $timeout      = 300,
+  $timeout      = 500,
   ) {
 
     $command = $dependencies ? {
