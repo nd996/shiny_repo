@@ -1,5 +1,11 @@
 # Test in VMs to get R & Shiney installed via Puppet
 
+03.12.22
+- Code tidy up, removed unused class
+- Ensured that when the shiny R package is first installed it installs all dependencies
+
+---
+
 02.12.22
 - Added defined resource to install shiny apps!!
 - Tidied the code up a little
@@ -14,15 +20,19 @@
 
 ---
 
-Basic working version, right now it adds the official R repo, installs the latest version of R, adds the R packages then installs Shiny server and one extra R package. The R packages can be installed through the install_package.pp simple by adding a new line.
+Basic working version, right now it adds the official R repo, installs the latest version of R, installs the shiny R package then installs Shiny server, one extra R package. The R packages can be installed through the r_packages.pp simply by adding a small code block. Shiny apps can now be installed from the shiny_apps.pp file, only basic support exists for now. This needs to include options like private git repo, if storage is needed and user authentication.
 
 To Do
 - Orgainse the files and folders including better naming **in progress**
 - Test Shiny deb is installed before installing again, right now it installs every time  **in progress**
 - No work on adding new apps has been started yet **in progress**
+    - Pull from git repo (only)
+    - User auth
+    - Private git repo
+    - Storage if needed
 - Eventually this should be a complete module we submit to Puppet Forge
 - Probably need to customise settings, for the web server, logs etc
-- Installing a r package with dependencies on a new shiny server takes more than the 300 timeout allows
+- Installing a r package with dependencies on a new shiny server can timeout, just rerun `puppet agant -t` to fix
 - More stuff I'm sure...
 
 ---
