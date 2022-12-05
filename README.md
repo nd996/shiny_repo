@@ -1,6 +1,6 @@
 # Test in VMs to get R & Shiney installed via Puppet
 
-03.12.22
+05.12.22
 - Code tidy up, removed unused class
 - Ensured that when the shiny R package is first installed it installs all dependencies
 
